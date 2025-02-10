@@ -1,0 +1,301 @@
+<AlterarRegistro>
+
+    Image:
+        source: "app/support/image/minimalbackground.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        opacity: 0.060
+
+    MDBoxLayout:
+        orientation: "horizontal"
+
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            MDRectangleFlatIconButton:
+                text: "Back"
+                font_name: app.font_monofonto
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                font_size: "20dp"
+                line_color: 0, 0, 0, 0
+                on_release: 
+                    root.manager.current = "tela_principal"
+    
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "[u]ALTERAR ORÇAMENTO[/u]"
+            font_style: "H5"
+            text_color: 1, 1, 1, 1
+            font_name: app.font_monofonto
+            markup: True
+    
+    MDGridLayout:
+        cols: 1
+        adaptive_height: True
+        spacing: dp(60)
+        padding: dp(23)
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDGridLayout:
+            cols: 2
+            spacing: dp(20)
+        
+            MDTextField:
+                id: id_orcamento
+                name: "id_orcamento"
+                required: True
+                hint_text: "ID Orçamento*"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "int"
+                multiline: False
+
+            MDRoundFlatIconButton:
+                text: "Buscar Orçamento"
+                icon: "search-web"
+                font_name: app.font_monofonto
+                text_color: 1, 1, 1, 1
+                font_size: "15dp"
+                size_hint_x: 0.32
+                on_release:
+                    root.consultarOrcamento()
+        
+        MDGridLayout:
+            cols: 1
+            adaptive_height: True
+
+            MDTextField:
+                id: ra_cliente
+                name: "ra_cliente"
+                hint_text: "RA Cliente"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "int"
+                multiline: False
+                readonly: True
+            
+            MDTextField:
+                id: id_servico
+                name: "id_servico"
+                hint_text: "ID Serviço"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "int"
+                multiline: False
+                readonly: True
+        
+        MDBoxLayout:
+            orientation: "horizontal"
+
+            MDRectangleFlatIconButton:
+                id: btn_data_contratacao
+                name: "btn_data_contratacao"
+                text: "DATA DE CONTRATAÇÃO"
+                icon: "calendar"
+                theme_text_color: "Custom"
+                font_size: "15dp"
+                text_color: 1, 1, 1, 1
+                font_name: app.font_monofonto
+                pos_hint: {'center_x': .13, 'center_y': 5}
+                size_hint_x: 0.5
+                disabled: True
+                on_release:
+                    root.show_date_contratacao()
+            
+            MDLabel:
+                id: data_contratacao
+                name: "data_contratacao"
+                text: "00/00/0000"
+                padding: dp(10)
+                font_name: app.font_monofonto
+                font_size: "15dp"
+                color: 1, 1, 1, 1
+        
+        MDBoxLayout:
+            orientation: "horizontal"
+
+            MDRectangleFlatIconButton:
+                id: btn_data_entrega
+                name: "btn_data_entrega"
+                text: "DATA DE ENTREGA"
+                icon: "calendar"
+                theme_text_color: "Custom"
+                font_size: "15dp"
+                text_color: 1, 1, 1, 1
+                font_name: app.font_monofonto
+                pos_hint: {'center_x': .13, 'center_y': 5}
+                size_hint_x: 0.5
+                disabled: True
+                on_release:
+                    root.show_date_entrega()
+            
+            MDLabel:
+                id: data_entrega
+                name: "data_entrega"
+                text: "00/00/0000"
+                padding: dp(10)
+                font_name: app.font_monofonto
+                font_size: "15dp"
+                color: 1, 1, 1, 1
+
+        MDGridLayout:
+            cols: 1
+            adaptive_height: True
+
+            MDTextField:
+                id: valor_cobrado
+                name: "valor_cobrado"
+                hint_text: "Valor Cobrado"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "float"
+                multiline: False
+                readonly: True
+            
+            MDTextField:
+                id: valor_pendente
+                name: "valor_pendente"
+                hint_text: "Valor Pendente"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "float"
+                multiline: False
+                readonly: True
+        
+        MDBoxLayout:
+            orientation: 'horizontal'
+
+            MDRectangleFlatIconButton:
+                id: btn_pendente
+                name: "btn_pendente"
+                text: "PENDENTE"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: 0.3
+                width: "120dp"
+                disabled: True
+                on_release:
+                    root.situacaoPendente()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: icon_pendente
+                        name: "icon_pendente"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+
+            MDRectangleFlatIconButton:
+                id: btn_concluido
+                name: "btn_concluido"
+                text: "CONCLUÍDO"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: 0.3
+                width: "120dp"
+                disabled: True
+                on_release:
+                    root.situacaoConcluido()
+                
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: icon_concluido
+                        name: "icon_concluido"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+
+            MDRectangleFlatIconButton:
+                id: btn_indeferido
+                name: "btn_indeferido"
+                text: "INDEFERIDO"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: 0.3
+                width: "120dp"
+                disabled: True
+                on_release:
+                    root.situacaoIndeferido()
+                
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: icon_indeferido
+                        name: "icon_indeferido"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+
+        AnchorLayout:
+            anchor_x: "right"
+            anchor_y: "bottom"
+
+            MDRoundFlatIconButton:
+                text: "RESETAR"
+                icon: "close-circle-outline"
+                size_hint: (0.1, 0.06)
+                font_name: app.font_monofonto
+                theme_text_color: "Custom"
+                text_color: 0.8, 0, 0, 1
+                icon_color: 0.8, 0, 0, 1
+                line_color: 0, 0, 0, 0
+                font_size: "20dp"
+                on_release:
+                    root.resetarCampos()
+
+        MDRoundFlatIconButton:
+            text: "FINALIZAR"
+            icon: "check"
+            size_hint: (0.1, 0.06)
+            font_name: app.font_monofonto
+            line_color: 0, 0, 0, 0
+            font_size: "20dp"
+            on_release:
+                root.finalizarAlteracao()

@@ -1,0 +1,238 @@
+<MDFillRoundFlatButtonCustom@MDFlatButton+HoverBehavior>
+
+<TelaPrincipal>
+
+    Image:
+        source: "app/support/image/minimalbackground.jpg"
+        allow_stretch: True
+        keep_ratio: False
+
+    MDBottomNavigation:
+        panel_color: 0.1, 0.3, 0.2, 0.8
+        selected_color_background: "orange"
+        text_color_active: "black"
+        text_color_normal: "white"
+
+        MDBottomNavigationItem:
+            name: 'inicio'
+            text: 'INICIO'
+            icon: 'home'
+            badge_icon: ""
+            
+            Image:
+                source: "app/support/image/OIG.jpg"
+                allow_stretch: True
+                keep_ratio: False
+                opacity: 0.060
+
+            MDGridLayout:
+                cols: 2
+                
+                MDRectangleFlatIconButton:
+                    id: conexao_icon
+                    name: 'conexao_icon'
+                    font_name: app.font_monofonto
+                    text: "CONECTANDO"
+                    line_color: 0, 0, 0, 0
+                    text_color: 1, 1, 0, 1
+                    icon_color: 1, 1, 0, 1
+                    icon: 'database'
+                    pos_hint: {'center_x': 0.5}
+                    on_release:
+                        root.tryConnect()
+
+            AnchorLayout:
+                anchor_x: "right"
+                anchor_y: "top"
+
+                MDRectangleFlatIconButton:
+                    text: "LOGOUT"
+                    font_name: app.font_monofonto
+                    md_bg_color: .1, .1, .1, 1
+                    line_color: 0, 0, 0, 0
+                    text_color: 1, 1, 0, 1
+                    icon_color: 1, 1, 0, 1
+                    icon: 'logout'
+                    size_hint_y: None
+                    size_hint_x: None
+                    on_release: 
+                        root.logout()
+                        root.manager.current = "login_screen"
+                
+                
+
+        MDBottomNavigationItem:
+            name: 'cadastrar'
+            text: 'CADASTRAR'
+            icon: 'account'
+            badge_icon: ""
+
+            Image:
+                source: "app/support/image/OIG.jpg"
+                allow_stretch: True
+                keep_ratio: False
+                opacity: 0.060
+
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(20)
+                padding: dp(10)
+                pos_hint: {"center_x": .5, "center_y": 1.17}
+
+                MDRectangleFlatIconButton:
+                    text: "CADASTRAR NOVO CLIENTE"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "account-plus"
+                    on_release:
+                        root.manager.current = "cadastro_cliente"
+                        
+                MDRectangleFlatIconButton:
+                    text: "CADASTRAR NOVO SERVIÇO"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "calendar-plus"
+                    on_release:
+                        root.manager.current = "cadastro_service"
+        
+                MDRectangleFlatIconButton:
+                    text: "INSERIR NOVO SERVIÇO"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "plus"
+                    on_release:
+                        root.manager.current = "new_service"
+
+
+        MDBottomNavigationItem:
+            name: 'consultar'
+            text: 'CONSULTAR'
+            icon: 'search-web'
+            badge_icon: ""
+
+            Image:
+                source: "app/support/image/OIG.jpg"
+                allow_stretch: True
+                keep_ratio: False
+                opacity: 0.060
+
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(20)
+                padding: dp(10)
+                pos_hint: {"center_x": .5, "center_y": 1.076}
+
+                MDRectangleFlatIconButton:
+                    text: "CONSULTAR CLIENTES"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "account-search"
+                    on_release:
+                        root.manager.current = "consulta_cliente"
+                        
+                MDRectangleFlatIconButton:
+                    text: "CONSULTAR SERVIÇOS"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "file-find"
+                    on_release:
+                        root.manager.current = "consulta_service"
+
+                MDRectangleFlatIconButton:
+                    text: "CONSULTAR ORÇAMENTOS"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "file-search"
+                    on_release:
+                        root.manager.current = "consulta_orcamento"
+
+                MDRectangleFlatIconButton:
+                    text: "CONSULTA ÚNICA"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "magnify"
+                    on_release:
+                        root.manager.current = "consulta_unica"
+
+        MDBottomNavigationItem:
+            name: 'alterar'
+            text: 'ALTERAR'
+            icon: 'pencil'
+
+            Image:
+                source: "app/support/image/OIG.jpg"
+                allow_stretch: True
+                keep_ratio: False
+                opacity: 0.060
+
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(20)
+                padding: dp(10)
+                pos_hint: {"center_x": .5, "center_y": 1.17}
+
+                MDRectangleFlatIconButton:
+                    text: "ALTERAR DADOS DE CLIENTE"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "pencil"
+                    on_release:
+                        root.manager.current = "alterar_cliente"
+                        
+                MDRectangleFlatIconButton:
+                    text: "ALTERAR DADOS DE SERVIÇO"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "tools"
+                    on_release:
+                        root.manager.current = "alterar_service"
+        
+                MDRectangleFlatIconButton:
+                    text: "ALTERAR REGISTROS"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "clipboard-edit"
+                    on_release:
+                        root.manager.current = "alterar_registro"
+                
+                

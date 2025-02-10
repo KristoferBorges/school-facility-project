@@ -1,0 +1,148 @@
+<ConsultaUnica>
+
+    Image:
+        source: "app/support/image/minimalbackground.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        opacity: 0.060
+
+    MDBoxLayout:
+        orientation: "horizontal"
+
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            MDRectangleFlatIconButton:
+                text: "Back"
+                font_name: app.font_monofonto
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                font_size: "20dp"
+                line_color: 0, 0, 0, 0
+                on_release: 
+                    root.manager.current = "tela_principal"
+    
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "[u]CONSULTA ÚNICA[/u]"
+            font_style: "H5"
+            text_color: 1, 1, 1, 1
+            font_name: app.font_monofonto
+            markup: True
+    
+    MDGridLayout:
+        cols: 1
+        adaptive_height: True
+        spacing: dp(55)
+        padding: dp(23)
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            padding: (dp(10), 0, 0, dp(44))
+
+            MDLabel:
+                text: "BUSCAR CLIENTE"
+                font_style: "H5"
+                text_color: 1, 1, 1, 1
+                font_name: app.font_monofonto
+            
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: (dp(10), 0, 0, dp(26))
+
+            MDTextField:
+                id: ra_cliente
+                hint_text: "RA"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                multiline: False
+                min_text_length: 5
+                input_filter: "int"
+                on_focus: 
+                    id_servico.text = ""
+                    id_orcamento.text = ""
+        
+        MDBoxLayout:
+            orientation: "horizontal"
+            padding: (dp(10), 0, 0, dp(44))
+
+            MDLabel:
+                text: "BUSCAR SERVIÇO"
+                font_style: "H5"
+                text_color: 1, 1, 1, 1
+                font_name: app.font_monofonto
+            
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: (dp(10), 0, 0, dp(26))
+
+            MDTextField:
+                id: id_servico
+                hint_text: "ID"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                multiline: False
+                min_text_length: 5
+                input_filter: "int"
+                on_focus:
+                    ra_cliente.text = ""
+                    id_orcamento.text = ""
+        
+        MDBoxLayout:
+            orientation: "horizontal"
+            padding: (dp(10), 0, 0, dp(44))
+
+            MDLabel:
+                text: "BUSCAR ORÇAMENTO"
+                font_style: "H5"
+                text_color: 1, 1, 1, 1
+                font_name: app.font_monofonto
+            
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: (dp(10), 0, 0, dp(26))
+
+            MDTextField:
+                id: id_orcamento
+                hint_text: "ID"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                multiline: False
+                min_text_length: 5
+                input_filter: "int"
+                on_focus:
+                    ra_cliente.text = ""
+                    id_servico.text = ""
+    
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        
+        MDRectangleFlatIconButton:
+            text: "Consultar"
+            font_name: app.font_monofonto
+            icon: "magnify"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            md_bg_color: .1, .1, .1, 0.90
+            font_size: "20dp"
+            size_hint: 1, None
+            on_release:
+                root.realizarConsultaUnica()

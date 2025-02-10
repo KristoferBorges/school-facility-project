@@ -1,0 +1,156 @@
+<ConsultaCliente>
+
+    Image:
+        source: "app/support/image/minimalbackground.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        opacity: 0.060
+
+    MDBoxLayout:
+        orientation: "horizontal"
+
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            MDRectangleFlatIconButton:
+                text: "Back"
+                font_name: app.font_monofonto
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                font_size: "20dp"
+                line_color: 0, 0, 0, 0
+                on_release: 
+                    root.manager.current = "tela_principal"
+    
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "[u]CONSULTAR CLIENTES[/u]"
+            font_style: "H5"
+            text_color: 1, 1, 1, 1
+            font_name: app.font_monofonto
+            markup: True
+
+    MDGridLayout:
+        cols: 1
+        spacing: dp(20)
+        padding: dp(30)
+        pos_hint: {"center_x": .5, "center_y": 0.94}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: dp(5)
+
+            MDRectangleFlatIconButton:
+                text: "RA"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: .3
+                on_release:
+                    root.filterRA()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: ra_filter
+                        name: "ra_filter"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+            
+            MDRectangleFlatIconButton:
+                text: "Nome"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: .3
+                on_release:
+                    root.filterNome()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: nome_filter
+                        name: "nome_filter"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+            
+            MDRectangleFlatIconButton:
+                text: "Semestre"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: .3
+                on_release:
+                    root.filterSemestre()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: semestre_filter
+                        name: "semestre_filter"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+            
+            MDRectangleFlatIconButton:
+                text: "Registro"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: .3
+                on_release:
+                    root.filterRegistro()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: registro_filter
+                        name: "registro_filter"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        
+        MDRectangleFlatIconButton:
+            text: "Consultar"
+            font_name: app.font_monofonto
+            icon: "magnify"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            md_bg_color: .1, .1, .1, 0.90
+            font_size: "20dp"
+            size_hint: 1, None
+            on_release: 
+                root.consultClientFilter()

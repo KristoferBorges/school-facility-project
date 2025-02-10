@@ -1,0 +1,249 @@
+<AlterarCliente>
+
+    Image:
+        source: "app/support/image/minimalbackground.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        opacity: 0.060
+
+    MDBoxLayout:
+        orientation: "horizontal"
+
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            MDRectangleFlatIconButton:
+                text: "Back"
+                font_name: app.font_monofonto
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                font_size: "20dp"
+                line_color: 0, 0, 0, 0
+                on_release: 
+                    root.manager.current = "tela_principal"
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "[u]ALTERAR CLIENTE[/u]"
+            font_style: "H5"
+            text_color: 1, 1, 1, 1
+            font_name: app.font_monofonto
+            markup: True
+    
+    MDGridLayout:
+        cols: 1
+        adaptive_height: True
+        spacing: dp(60)
+        padding: dp(23)
+        pos_hint: {"center_x": .5, "center_y": .589}
+
+        MDGridLayout:
+            cols: 2
+            spacing: dp(20)
+        
+            MDTextField:
+                id: ra_cliente
+                name: "ra_cliente"
+                required: True
+                hint_text: "RA *"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "int"
+                multiline: False
+
+            MDRoundFlatIconButton:
+                text: "Buscar Cliente"
+                icon: "account-search"
+                font_name: app.font_monofonto
+                text_color: 1, 1, 1, 1
+                font_size: "15dp"
+                size_hint_x: 0.32
+                on_release:
+                    root.consultarCliente()
+                    
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: dp(20)
+            adaptive_height: True
+
+            MDTextField:
+                id: nome_cliente
+                name: "nome_cliente"
+                hint_text: "Nome"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                multiline: False
+                readonly: True
+            
+            MDTextField:
+                id: semestre_cliente
+                name: "semestre_cliente"
+                hint_text: "Semestre"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "int"
+                multiline: False
+                readonly: True
+            
+        MDBoxLayout:
+            orientation: "horizontal"
+
+            MDRectangleFlatIconButton:
+                id: btn_data_registro
+                name: "btn_data_registro"
+                text: "DATA DE REGISTRO"
+                icon: "calendar"
+                theme_text_color: "Custom"
+                font_size: "15dp"
+                text_color: 1, 1, 1, 1
+                font_name: app.font_monofonto
+                pos_hint: {'center_x': .13, 'center_y': 5}
+                disabled: True
+                on_release:
+                    root.show_date_picker()
+            
+            MDLabel:
+                id: data_registro
+                name: "data_registro"
+                text: "00/00/0000"
+                padding: dp(10)
+                font_name: app.font_monofonto
+                font_size: "15dp"
+                color: 1, 1, 1, 1
+
+        MDGridLayout:
+            cols: 1
+            spacing: dp(20)
+            adaptive_height: True
+            
+
+            MDLabel:
+                text: "STATUS"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDGridLayout:
+                cols: 2
+                adaptive_height: True
+                spacing: dp(5)
+
+                MDRectangleFlatIconButton:
+                    id: btn_ativo
+                    name: "btn_ativo"
+                    text: "ATIVO"
+                    font_name: app.font_monofonto
+                    font_size: "20dp"
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: .1, .1, .1, 0.90
+                    line_color: 0, 0, 0, 0
+                    size_hint_x: 0.3
+                    width: "120dp"
+                    disabled: True
+                    on_release:
+                        root.statusAtivo()
+
+                    AnchorLayout:
+                        anchor_x: "left"
+                        anchor_y: "center"
+
+                        MDIcon:
+                            id: icon_ativo
+                            name: "icon_ativo"
+                            icon: 'check'
+                            opacity: 0
+                            theme_text_color: "Custom"
+                            text_color: 0, 1, 0, 1
+
+                MDRectangleFlatIconButton:
+                    id: btn_inativo
+                    name: "btn_inativo"
+                    text: "INATIVO"
+                    font_name: app.font_monofonto
+                    font_size: "20dp"
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: .1, .1, .1, 0.90
+                    line_color: 0, 0, 0, 0
+                    size_hint_x: 0.3
+                    width: "120dp"
+                    disabled: True
+                    on_release:
+                        root.statusInativo()
+                    
+                    AnchorLayout:
+                        anchor_x: "left"
+                        anchor_y: "center"
+
+                        MDIcon:
+                            id: icon_inativo
+                            name: "icon_inativo"
+                            icon: 'check'
+                            opacity: 0
+                            theme_text_color: "Custom"
+                            text_color: 0, 1, 0, 1
+
+
+        MDGridLayout:
+            cols: 1   
+
+            MDTextField:
+                id: comentario_cliente
+                name: "comentario_cliente"
+                hint_text: "Anotação"
+                mode: "rectangle"
+                size_hint_x: 1
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                multiline: True
+                max_height: 150
+                max_text_length: 205
+                readonly: True
+    
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+
+        AnchorLayout:
+            anchor_x: "right"
+            anchor_y: "bottom"
+
+            MDRoundFlatIconButton:
+                text: "RESETAR"
+                icon: "close-circle-outline"
+                size_hint: (0.1, 0.06)
+                font_name: app.font_monofonto
+                theme_text_color: "Custom"
+                text_color: 0.8, 0, 0, 1
+                icon_color: 0.8, 0, 0, 1
+                line_color: 0, 0, 0, 0
+                font_size: "20dp"
+                on_release:
+                    root.resetarCampos()
+
+        MDRoundFlatIconButton:
+            text: "FINALIZAR"
+            icon: "check"
+            size_hint: (0.1, 0.06)
+            font_name: app.font_monofonto
+            line_color: 0, 0, 0, 0
+            font_size: "20dp"
+            on_release:
+                root.finalizarAlteracao()

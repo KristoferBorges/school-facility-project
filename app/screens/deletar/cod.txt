@@ -1,0 +1,52 @@
+MDBottomNavigationItem:
+            name: 'deletar'
+            text: "DELETAR"
+            icon: 'delete'
+            
+            Image:
+                source: "app/support/image/OIG.jpg"
+                allow_stretch: True
+                keep_ratio: False
+                opacity: 0.060
+
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: dp(20)
+                padding: dp(10)
+                pos_hint: {"center_x": .5, "center_y": 1.17}
+
+                MDRectangleFlatIconButton:
+                    text: "DELETAR CLIENTE"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "account-remove"
+                    on_release:
+                        root.manager.current = "deletar_cliente"
+                
+                MDRectangleFlatIconButton:
+                    text: "DELETAR SERVIÇO"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "file-remove"
+                    on_release:
+                        root.manager.current = "deletar_servico"
+                
+                MDRectangleFlatIconButton:
+                    text: "DELETAR ORÇAMENTO"
+                    font_name: app.font_monofonto
+                    font_size: "24sp"
+                    text_color: 1, 1, 1, 0.86
+                    md_bg_color: 0.5, 0.7, 0.5, 0.04
+                    line_color: 0, 0, 0, 0
+                    size_hint_y: None
+                    icon: "file-remove-outline"
+                    on_release:
+                        root.manager.current = "deletar_orcamento"

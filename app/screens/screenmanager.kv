@@ -1,0 +1,76 @@
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+#:include LoginScreen login_screen.LoginScreen
+#:include TelaPrincipal tela_principal.TelaPrincipal
+#:include CadastroCliente cadastroCliente.CadastroCliente
+#:include CadastroService cadastroService.CadastroService
+#:include NewService newService.NewService
+#:include ConsultaCliente consultaCliente.ConsultaCliente
+#:include ConsultaService consultaService.ConsultaService
+#:include ConsultaUnica consultaUnica.ConsultaUnica
+#:include DeletarCliente deletarCliente.DeletarCliente
+#:include DeletarServico deletarServico.DeletarServico
+
+<MainScreenManager>
+    transition: NoTransition()
+
+    LoginScreen:
+        id: login_screen
+        name: 'login_screen'
+
+    AlterarService:
+        id: alterar_service
+        name: 'alterar_service'
+
+    AlterarCliente:
+        id: alterar_cliente
+        name: 'alterar_cliente'
+
+    DeletarCliente:
+        id: deletar_cliente
+        name: 'deletar_cliente'
+
+    DeletarServico:
+        id: deletar_servico
+        name: 'deletar_servico'
+
+    DeletarOrcamento:
+        id: deletar_orcamento
+        name: 'deletar_orcamento'
+
+    TelaPrincipal:
+        id: tela_principal
+        name: 'tela_principal'
+
+    AlterarRegistro:
+        id: alterar_registro
+        name: 'alterar_registro'
+
+    ConsultaUnica:
+        id: consulta_unica
+        name: 'consulta_unica'
+
+    ConsultaOrcamento:
+        id: consulta_orcamento
+        name: 'consulta_orcamento'
+
+    ConsultaCliente:
+        id: consulta_cliente
+        name: 'consulta_cliente'
+
+    NewService:
+        id: new_service
+        name: 'new_service'
+
+    CadastroService:
+        id: cadastro_service
+        name: 'cadastro_service'
+
+    CadastroCliente:
+        id: cadastro_cliente
+        name: 'cadastro_cliente'
+    
+    ConsultaService:
+        id: consulta_service
+        name: 'consulta_service'

@@ -1,0 +1,196 @@
+<NewService>:
+
+    Image:
+        source: "app/support/image/minimalbackground.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        opacity: 0.060
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            MDRectangleFlatIconButton:
+                text: "Back"
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                font_size: "20dp"
+                line_color: 0, 0, 0, 0
+                on_release: 
+                    root.manager.current = "tela_principal"
+    
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "[u]NOVO SERVIÇO[/u]"
+            font_style: "H5"
+            text_color: 1, 1, 1, 1
+            font_name: app.font_monofonto
+            markup: True
+        
+    MDGridLayout:
+        cols: 1
+        adaptive_height: True
+        spacing: dp(60)
+        padding: dp(23)
+        pos_hint: {"center_x": .5, "center_y": .52}
+
+        MDGridLayout:
+            cols: 2
+            spacing: dp(20)
+
+            MDTextField:
+                id: busca_ra_cliente
+                name: "busca_ra_cliente"
+                required: True
+                hint_text: "RA CLIENTE *"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "int"
+                multiline: False
+            
+            MDRoundFlatIconButton:
+                text: "Consultar Clientes"
+                icon: "account-search"
+                font_name: app.font_monofonto
+                text_color: 1, 1, 1, 1
+                font_size: "15dp"
+                size_hint_x: 0.32
+                on_release:
+                    root.consultarClientes()
+
+        MDGridLayout:
+            cols: 2
+            adaptive_height: True
+            spacing: dp(20)
+
+            MDTextField:
+                id: busca_service
+                name: "busca_service"
+                required: True
+                hint_text: "ID SERVIÇO *"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "int"
+                multiline: False
+            
+            MDRoundFlatIconButton:
+                text: "Consultar Serviços"
+                icon: "magnify"
+                font_name: app.font_monofonto
+                text_color: 1, 1, 1, 1
+                font_size: "15dp"
+                size_hint_x: 0.32
+                on_release:
+                    root.consultarServices()
+
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDTextField:
+                id: valor_cobrado
+                name: "valor_cobrado"
+                required: True
+                hint_text: "ORÇAMENTO *"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "float"
+                multiline: False
+
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDTextField:
+                id: valor_pendente
+                name: "valor_pendente"
+                required: True
+                hint_text: "PENDÊNCIA *"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "float"
+                multiline: False
+
+        MDBoxLayout:
+            orientation: "horizontal"
+
+            MDRectangleFlatIconButton:
+                text: "DATA DE REGISTRO"
+                icon: "calendar"
+                theme_text_color: "Custom"
+                font_size: "15dp"
+                text_color: 1, 1, 1, 1
+                font_name: app.font_monofonto
+                pos_hint: {'center_x': .13, 'center_y': 5}
+                on_release:
+                    root.show_date()
+
+            MDLabel:
+                id: data_registro
+                name: "data_registro"
+                text: "00/00/0000"
+                padding: dp(10)
+                font_name: app.font_monofonto
+                font_size: "15dp"
+                color: 1, 1, 1, 1
+
+        MDBoxLayout:
+            orientation: "horizontal"
+
+            MDRectangleFlatIconButton:
+                text: "DATA DE ENTREGA*"
+                icon: "calendar"
+                theme_text_color: "Custom"
+                font_size: "15dp"
+                text_color: 1, 1, 1, 1
+                font_name: app.font_monofonto
+                pos_hint: {'center_x': .13, 'center_y': 5}
+                on_release: 
+                    root.show_date_picker()
+            
+            MDLabel:
+                id: data_entrega
+                name: "data_entrega"
+                text: "00/00/0000"
+                padding: dp(10)
+                font_name: app.font_monofonto
+                font_size: "15dp"
+                color: 1, 1, 1, 1
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+
+        AnchorLayout:
+            anchor_x: "right"
+            anchor_y: "bottom"
+
+            MDRoundFlatIconButton:
+                text: "FINALIZAR"
+                icon: "check"
+                size_hint: (0.1, 0.06)
+                font_name: app.font_monofonto
+                line_color: 0, 0, 0, 0
+                font_size: "20dp"
+                on_release:
+                    root.finalizarRegistro()
+        

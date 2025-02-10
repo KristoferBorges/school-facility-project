@@ -1,0 +1,156 @@
+<ConsultaService>
+
+    Image:
+        source: "app/support/image/minimalbackground.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        opacity: 0.060
+
+    MDBoxLayout:
+        orientation: "horizontal"
+
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            MDRectangleFlatIconButton:
+                text: "Back"
+                font_name: app.font_monofonto
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                font_size: "20dp"
+                line_color: 0, 0, 0, 0
+                on_release: 
+                    root.manager.current = "tela_principal"
+    
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "[u]CONSULTAR SERVIÇOS[/u]"
+            font_style: "H5"
+            text_color: 1, 1, 1, 1
+            font_name: app.font_monofonto
+            markup: True
+    
+    MDGridLayout:
+        cols: 1
+        spacing: dp(20)
+        padding: dp(30)
+        pos_hint: {"center_x": .5, "center_y": 0.94}
+
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: dp(5)
+
+            MDRectangleFlatIconButton:
+                text: "ID"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: .3
+                on_release:
+                    root.filterID()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: id_filter
+                        name: "id_filter"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+            
+            MDRectangleFlatIconButton:
+                text: "Nome"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: .3
+                on_release:
+                    root.filterNome()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: nome_filter
+                        name: "nome_filter"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+            
+            MDRectangleFlatIconButton:
+                text: "Valor"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: .3
+                on_release:
+                    root.filterValor()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: valor_filter
+                        name: "valor_filter"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+            
+            MDRectangleFlatIconButton:
+                text: "Dependência"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: .3
+                on_release:
+                    root.filterDependencia()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: dependencia_filter
+                        name: "dependencia_filter"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        
+        MDRectangleFlatIconButton:
+            text: "Consultar"
+            font_name: app.font_monofonto
+            icon: "magnify"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            md_bg_color: .1, .1, .1, 0.90
+            font_size: "20dp"
+            size_hint: 1, None
+            on_release:
+                root.consultServiceFilter()

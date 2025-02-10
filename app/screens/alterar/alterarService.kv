@@ -1,0 +1,271 @@
+<AlterarService>
+
+    Image:
+        source: "app/support/image/minimalbackground.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        opacity: 0.060
+
+    MDBoxLayout:
+        orientation: "horizontal"
+
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            MDRectangleFlatIconButton:
+                text: "Back"
+                font_name: app.font_monofonto
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                font_size: "20dp"
+                line_color: 0, 0, 0, 0
+                on_release: 
+                    root.manager.current = "tela_principal"
+    
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "[u]ALTERAR SERVIÇO[/u]"
+            font_style: "H5"
+            text_color: 1, 1, 1, 1
+            font_name: app.font_monofonto
+            markup: True
+    
+    MDGridLayout:
+        cols: 1
+        adaptive_height: True
+        spacing: dp(60)
+        padding: dp(23)
+        pos_hint: {"center_x": .5, "center_y": .55}
+
+        MDGridLayout:
+            cols: 2
+            spacing: dp(20)
+        
+            MDTextField:
+                id: id_servico
+                name: "id_servico"
+                required: True
+                hint_text: "ID *"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "int"
+                multiline: False
+
+            MDRoundFlatIconButton:
+                text: "Buscar Serviço"
+                icon: "account-search"
+                font_name: app.font_monofonto
+                text_color: 1, 1, 1, 1
+                font_size: "15dp"
+                size_hint_x: 0.32
+                on_release:
+                    root.consultarServico()
+                    
+        MDBoxLayout:
+            orientation: "vertical"
+            spacing: dp(20)
+            adaptive_height: True
+
+            MDTextField:
+                id: nome_servico
+                name: "nome_servico"
+                hint_text: "Serviço"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                multiline: False
+                readonly: True
+            
+            MDTextField:
+                id: valor_servico
+                name: "valor_servico"
+                hint_text: "Valor"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "float"
+                multiline: False
+                readonly: True
+        
+        MDGridLayout:
+            cols: 1
+            spacing: dp(20)
+            adaptive_height: True
+            
+
+            MDLabel:
+                text: "STATUS"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDGridLayout:
+                cols: 2
+                adaptive_height: True
+                spacing: dp(5)
+
+                MDRectangleFlatIconButton:
+                    id: btn_ativo
+                    name: "btn_ativo"
+                    text: "ATIVO"
+                    font_name: app.font_monofonto
+                    font_size: "20dp"
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: .1, .1, .1, 0.90
+                    line_color: 0, 0, 0, 0
+                    size_hint_x: 0.3
+                    width: "120dp"
+                    disabled: True
+                    on_release:
+                        root.statusAtivo()
+
+                    AnchorLayout:
+                        anchor_x: "left"
+                        anchor_y: "center"
+
+                        MDIcon:
+                            id: icon_ativo
+                            name: "icon_ativo"
+                            icon: 'check'
+                            opacity: 0
+                            theme_text_color: "Custom"
+                            text_color: 0, 1, 0, 1
+
+                MDRectangleFlatIconButton:
+                    id: btn_inativo
+                    name: "btn_inativo"
+                    text: "INATIVO"
+                    font_name: app.font_monofonto
+                    font_size: "20dp"
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: .1, .1, .1, 0.90
+                    line_color: 0, 0, 0, 0
+                    size_hint_x: 0.3
+                    width: "120dp"
+                    disabled: True
+                    on_release:
+                        root.statusInativo()
+                    
+                    AnchorLayout:
+                        anchor_x: "left"
+                        anchor_y: "center"
+
+                        MDIcon:
+                            id: icon_inativo
+                            name: "icon_inativo"
+                            icon: 'check'
+                            opacity: 0
+                            theme_text_color: "Custom"
+                            text_color: 0, 1, 0, 1
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(15)
+            adaptive_height: True
+
+            MDLabel:
+                text: "SITUAÇÃO"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+            MDRectangleFlatIconButton:
+                id: btn_sem_dependencia
+                name: "btn_sem_dependencia"
+                text: "SEM DEPENDÊNCIA"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: 0.65
+                width: "120dp"
+                disabled: True
+                on_release:
+                    root.mostrarIconSemDependencia()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: icon_sem_dependencia
+                        name: "icon_sem_dependencia"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+
+            MDRectangleFlatIconButton:
+                id: btn_com_dependencia
+                name: "btn_com_dependencia"
+                text: "COM DEPENDÊNCIA"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: 0.65
+                width: "120dp"
+                disabled: True
+                on_release:
+                    root.mostrarIconComDependencia()
+                
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: icon_com_dependencia
+                        name: "icon_com_dependencia"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+    
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+
+        AnchorLayout:
+            anchor_x: "right"
+            anchor_y: "bottom"
+
+            MDRoundFlatIconButton:
+                text: "RESETAR"
+                icon: "close-circle-outline"
+                size_hint: (0.1, 0.06)
+                font_name: app.font_monofonto
+                theme_text_color: "Custom"
+                text_color: 0.8, 0, 0, 1
+                icon_color: 0.8, 0, 0, 1
+                line_color: 0, 0, 0, 0
+                font_size: "20dp"
+                on_release:
+                    root.resetarCampos()
+
+        MDRoundFlatIconButton:
+            text: "FINALIZAR"
+            icon: "check"
+            size_hint: (0.1, 0.06)
+            font_name: app.font_monofonto
+            line_color: 0, 0, 0, 0
+            font_size: "20dp"
+            on_release:
+                root.finalizarAlteracao()

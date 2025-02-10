@@ -1,0 +1,162 @@
+<CadastroService>:
+
+    Image:
+        source: "app/support/image/minimalbackground.jpg"
+        allow_stretch: True
+        keep_ratio: False
+        opacity: 0.060
+
+    MDBoxLayout:
+        orientation: "horizontal"
+
+        AnchorLayout:
+            anchor_x: "left"
+            anchor_y: "top"
+
+            MDRectangleFlatIconButton:
+                text: "Back"
+                font_name: app.font_monofonto
+                icon: "arrow-left"
+                theme_text_color: "Custom"
+                font_size: "20dp"
+                line_color: 0, 0, 0, 0
+                on_release: 
+                    root.manager.current = "tela_principal"
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+        pos_hint: {"center_x": .5, "center_y": .9}
+
+        MDLabel:
+            text: "[u]CADASTRO DE SERVIÇO[/u]"
+            font_style: "H5"
+            text_color: 1, 1, 1, 1
+            font_name: app.font_monofonto
+            markup: True
+
+    MDGridLayout:
+        cols: 1
+        adaptive_height: True
+        spacing: dp(65)
+        padding: dp(23)
+        pos_hint: {"center_x": .5, "center_y": .6}
+        
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDTextField:
+                id: nome_service
+                name: "nome_service"
+                required: True
+                hint_text: "Nome *"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                multiline: False
+                min_text_length: 5
+        
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDTextField:
+                id: valor_service
+                name: "valor_service"
+                required: True
+                hint_text: "Valor *"
+                mode: "rectangle"
+                size_hint_x: 0.65
+                hint_text_color_focus: "white"
+                strip: True
+                font_name: app.font_monofonto
+                input_filter: "float"
+                multiline: False
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            padding: dp(10)
+
+            MDLabel:
+                text: ""
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                color: 1, 1, 1, 1
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: "10dp"
+
+            MDRectangleFlatIconButton:
+                id: btn_sem_dependencia
+                name: "btn_sem_dependencia"
+                text: "SEM DEPENDÊNCIA"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: 0.65
+                width: "120dp"
+                on_release:
+                    root.mostrarIconSemDependencia()
+
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: icon_sem_dependencia
+                        name: "icon_sem_dependencia"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+
+            MDRectangleFlatIconButton:
+                id: btn_com_dependencia
+                name: "btn_com_dependencia"
+                text: "COM DEPENDÊNCIA"
+                font_name: app.font_monofonto
+                font_size: "20dp"
+                text_color: 1, 1, 1, 1
+                md_bg_color: .1, .1, .1, 0.90
+                line_color: 0, 0, 0, 0
+                size_hint_x: 0.65
+                width: "120dp"
+                on_release:
+                    root.mostrarIconComDependencia()
+                
+                AnchorLayout:
+                    anchor_x: "left"
+                    anchor_y: "center"
+
+                    MDIcon:
+                        id: icon_com_dependencia
+                        name: "icon_com_dependencia"
+                        icon: 'check'
+                        opacity: 0
+                        theme_text_color: "Custom"
+                        text_color: 0, 1, 0, 1
+                        
+
+    MDBoxLayout:
+        orientation: "horizontal"
+        spacing: dp(20)
+        padding: dp(20)
+
+        AnchorLayout:
+            anchor_x: "right"
+            anchor_y: "bottom"
+
+            MDRoundFlatIconButton:
+                text: "FINALIZAR"
+                icon: "check"
+                size_hint: (0.1, 0.06)
+                font_name: app.font_monofonto
+                line_color: 0, 0, 0, 0
+                font_size: "20dp"
+                on_release:
+                    root.finalizarCadastroService()
