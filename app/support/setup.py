@@ -1,5 +1,6 @@
 import platform
-import mysql.connector
+
+import pymysql
 from time import sleep
 from kivy.clock import Clock
 from kivy.core.window import Window
@@ -49,11 +50,12 @@ class System_Crud:
         """
         # Conexão com o banco de dados
         try:
-            self.conexao = mysql.connector.connect(
-                host="127.0.0.1",
+            self.conexao = pymysql.connect(
+                host="viaduct.proxy.rlwy.net",
+                port=44229,
                 user="root",
-                password="",
-                database="bd_clientes",
+                password="kTVZPmoFaFaBlaXfQBeatwpggnszSGyr",
+                database="railway",
             )
             self.connected = True
             

@@ -40,8 +40,8 @@ class LiveApp(MDApp, App):
     # class to watch from *.py files
     CLASSES = {
         # ScreenManager
-        # "MainScreenManager": "app.screens.screenmanager",
-        "MainScreenManager": "app.screens.tests.screenmanager",
+        "MainScreenManager": "app.screens.screenmanager",
+        # "MainScreenManager": "app.screens.tests.screenmanager",
 
         # Demais screens
         "LoginScreen": "app.screens.login_screen.loginscreen",
